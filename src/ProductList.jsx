@@ -280,6 +280,31 @@ function ProductList({ onHomeClick }) {
             ) : (
                 <CartItem onContinueShopping={handleContinueShopping} />
             )}
+            {/* CREATE A BLOCK OF CARDS HERE */}
+            <div>
+                
+                <div className='product-list'>
+                {
+                    plantsArray.map((category, categoryIndex)=>
+                    <div>  
+                        <h1>
+                            {category.category}
+                        </h1>
+                        
+                        {
+                            category.plants.map((item, index) =>
+                            
+                                <div>{item.name}</div>
+                            
+                            )
+                        }
+                        
+                    </div>
+                    )
+
+                }
+                </div>
+            </div>            
         </div>
     );
 }
