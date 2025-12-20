@@ -274,37 +274,43 @@ function ProductList({ onHomeClick }) {
             </div>
             {!showCart ? (
                 <div className="product-grid">
-
-
                 </div>
             ) : (
                 <CartItem onContinueShopping={handleContinueShopping} />
             )}
             {/* CREATE A BLOCK OF CARDS HERE */}
             <div>
-                
-                <div className='product-list'>
+                <div>{/*  className='product-list'> */}
                 {
                     plantsArray.map((category, categoryIndex)=>
-                    <div>  
-                        <h1>
+                    <div className="product-grid" key={categoryIndex}>  
+                        <h1 className='plant_heading'>
                             {category.category}
                         </h1>
-                        
+                        <div className="product-list"  key={categoryIndex}>
                         {
                             category.plants.map((item, index) =>
-                            
-                                <div>{item.name}</div>
-                            
-                            )
-                        }
-                        
+                                    <div className='product-card' key={index}>
+                                        {/* <div className='tag' key={index}> */}
+                                        {/* <ol> */}
+                                        <div className='product-title'>{item.name}</div>
+                                        <img className='product-image' src={item.image} alt={item.name} />
+                                        <div>{item.description}</div>
+                                        <div className='product-price'>{item.cost}</div>
+                                        <button className='product-button'>Add to Cart</button>
+                                        {/* </ol> */}
+                                        
+                                    </div>
+
+
+                    )
+                    }
+                    </div>
                     </div>
                     )
-
                 }
                 </div>
-            </div>            
+            </div>
         </div>
     );
 }
