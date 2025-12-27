@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
-import { addItem } from '.CartSlice';
+import { addItem } from './CartSlice';
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
@@ -309,7 +309,7 @@ function ProductList({ onHomeClick }) {
                                         <img className='product-image' src={item.image} alt={item.name} />
                                         <div>{item.description}</div>
                                         <div className='product-price'>{item.cost}</div>
-                                        <button className='product-button' onClick={}>Add to Cart</button>
+                                        <button className='product-button' onClick={()=> handleAddToCart(item)}>Add to Cart</button>
                                         {/* </ol> */}
                                         
                                     </div>
