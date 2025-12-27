@@ -11,7 +11,7 @@ const CartItem = ({ onContinueShopping }) => {
   const calculateTotalAmount = (state) => {
     let total = 0;
     cart.forEach((item) => {
-        total += totalitem.quantity * parseFloat(item.cost.substring(1))
+        total += item.quantity * parseFloat(item.cost.substring(1))
     });
     return total;
     
@@ -25,18 +25,18 @@ const CartItem = ({ onContinueShopping }) => {
 
 
   const handleIncrement = (item) => {
-    dispatch(updateQuantity({ name: item.name, quantity: item.quantity++ }));
+    dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }));
 
 };
 
   const handleDecrement = (item) => {
     if(item.quantity<=1)
     {
-        dispatch(removeItem(item));
+        dispatch(removeItem(item.name));
     }
     else
     {
-        dispatch(updateQuantity({ name: item.name, quantity: item.quantity-- }));
+        dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
     }
     
   };
@@ -47,12 +47,16 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
-    total = totalitem.quantity * parseFloat(item.cost.substring(1));
+    let total = 0;
+    total = item.quantity * parseFloat(item.cost.substring(1));
+    return total;
   };
 
-  const calculateTotalQuantity = () => {
-    return CartItems ? CartItems.reduce((total, item) => total + item.quantity, 0) : 0;
-     };
+    const calculateTotalQuantity = () => {
+        let total = 0;
+        cart.reduce((total, item) => total + item.quantity, 0);
+        return total;
+    }
 
   return (
     <div className="cart-container">
